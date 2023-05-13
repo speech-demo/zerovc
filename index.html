@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zero-VC Demo</title>
+    <style>
+        .audio-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zero-VC Demo</h1>
+
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#novel-speaker">Novel Speaker Generation</a></li>
+        <li><a href="#zero-shot">Zero-shot Voice Conversion</a></li>
+        <li><a href="#text-to-speech">Text-to-Speech</a></li>
+        <li><a href="#latent-space">Latent Space Interpolation</a></li>
+    </ul>
+
+    <h2 id="novel-speaker">Novel Speaker Generation</h2>
+    <table>
+        <table style="width:100%; border-collapse: collapse;">
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid black; padding: 10px;">Model</th>
+                <th style="border: 1px solid black; padding: 10px;">Generated speaker</th>
+                <th colspan="3" style="border: 1px solid black; padding: 10px;">Top three retrieved audio</th>
+            </tr>
+            <!-- Zero-vc Row -->
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-vc</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/top_0_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/top_1_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/top_2_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Taco
+                Spawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/top_0_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/top_1_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_have_with/top_2_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+        
+            <!-- Zero-vc Row -->
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-vc</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/top_0_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/top_1_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/top_2_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Taco
+                Spawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/top_0_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/top_1_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/I_am_no/top_2_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+        
+            <!-- Zero-vc Row -->
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-vc</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/top_0_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/top_1_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/top_2_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Taco
+                Spawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/top_0_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/top_1_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/but_it_is_a_book/top_2_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+        
+            <!-- Zero-vc Row -->
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-vc</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/top_0_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/top_1_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/top_2_prior_fa.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Taco
+                Spawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/top_0_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/top_1_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="novel_spk/The_occurrence_is/top_2_prior_gmm.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+    </table>
+
+    <table>
+        <h2 id="zero-vc">Zero-shot Voice Conversion</h2>
+<table style="width:100%; border-collapse: collapse;">
+    <tr style="background-color: #f2f2f2;">
+        <th style="border: 1px solid black; padding: 10px;">Content Reference</th>
+        <th style="border: 1px solid black; padding: 10px;">Speaker Reference</th>
+        <th style="border: 1px solid black; padding: 10px;">Zero-VC</th>
+        <th style="border: 1px solid black; padding: 10px;">Speech Resynthesis</th>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/5639-5683/src.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/5639-5683/tgt.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/5639-5683/fa_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/5639-5683/resync_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/1089-4446/src.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/1089-4446/tgt.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/1089-4446/fa_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/1089-4446/resync_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/2830-2961/src.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/2830-2961/tgt.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/2830-2961/fa_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/2830-2961/resync_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+    </tr>
+    <tr style="background-color: #f2f2f2;">
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/6829-2300/src.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/6829-2300/tgt.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/6829-2300/fa_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <td style="border: 1px solid black; padding: 10px;">
+            <audio controls>
+                <source src="vc/6829-2300/resync_vc.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+    </tr>
+    <!-- Add other rows as needed -->
+</table>
+    </table>
+
+    <h2 id="text-to-speech">Text-to-Speech</h2>
+    <table>
+        <table style="width:100%; border-collapse: collapse;">
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid black; padding: 10px;">Ground Truth</th>
+                <th style="border: 1px solid black; padding: 10px;">Zero-VC</th>
+                <th style="border: 1px solid black; padding: 10px;">VITS</th>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_60/origin.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_60/fa_tts.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_60/vits.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_30/origin.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_30/fa_tts.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_30/vits.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>              
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_54/origin.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_54/fa_tts.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_54/vits.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>   
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_56/origin.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_56/fa_tts.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="tts/tts_56/vits.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>   
+            <!-- Add other rows as needed -->
+        </table>
+    </table>
+
+    <h2 id="latent-space">Latent Space Interpolation</h2>
+    <table>
+        <table style="width:100%; border-collapse: collapse;">
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid black; padding: 10px;">Model</th>
+                <th style="border: 1px solid black; padding: 10px;">Speaker-A</th>
+                <th colspan="3" style="border: 1px solid black; padding: 10px;">Interpolations</th>
+                <th style="border: 1px solid black; padding: 10px;">Speaker-B</th>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-VC</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-3/prior_fa_0.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-3/prior_fa_1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-3/prior_fa_2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-3/prior_fa_3.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-3/prior_fa_4.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">TacoSpawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-3/w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-3/0.7_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-3/0.5_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-3/0.3_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-3/w2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-VC</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-2/prior_fa_0.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-2/prior_fa_1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-2/prior_fa_2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-2/prior_fa_3.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-2/prior_fa_4.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">TacoSpawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-2/w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-2/0.7_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-2/0.5_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-2/0.3_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-2/w2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">Zero-VC</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-1/prior_fa_0.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-1/prior_fa_1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-1/prior_fa_2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-1/prior_fa_3.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/zerovc-1/prior_fa_4.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 1px solid black; padding: 10px;">TacoSpawn</td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-1/w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-1/0.7_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-1/0.5_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-1/0.3_w1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+                <td style="border: 1px solid black; padding: 10px;">
+                    <audio controls>
+                        <source src="interpolation/tacospawn-1/w2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            <!-- Add other rows as needed -->
+        </table>
+    </table>
+</body>
+</html>
